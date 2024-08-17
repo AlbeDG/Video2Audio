@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">mp3mp4converter</string>
+    <string-array name="audio_formats">
+        <item>MP3</item>
+        <item>AAC</item>
+        <item>AMR</item>
+        <item>AIFF</item>
+        <item>FLAC</item>
+        <item>M4A</item>
+        <item>OGG</item>
+        <item>OPUS</item>
+        <item>WAV</item>
+        <item>WMA</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

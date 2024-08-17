@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rename"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:textSize="20sp"
+        android:gravity="left"
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+
+    <EditText
+        android:id="@+id/renameInputText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:ems="10"
+        android:backgroundTint="@color/light_blue"
+        android:inputType="text"
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/renameCancelButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:textColor="@color/light_blue"
+            android:textStyle="bold"
+            android:text="Cancel" />
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="match_parent"/>
+
+        <Button
+            android:id="@+id/renameDoneButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_blue"
+            android:textStyle="bold"
+            android:text="Done" />
+    </LinearLayout>
+
+
+
+</LinearLayout>
