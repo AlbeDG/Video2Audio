@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Title"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/titleEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:backgroundTint="@color/light_blue"
+            android:drawableTint="@color/light_blue"
+            android:textColor="@color/white"
+            android:inputType="text" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Artist"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/artistEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:backgroundTint="@color/light_blue"
+            android:drawableTint="@color/light_blue"
+            android:textColor="@color/white"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Album"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/albumEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:backgroundTint="@color/light_blue"
+            android:drawableTint="@color/light_blue"
+            android:textColor="@color/white"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Year"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/yearEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:backgroundTint="@color/light_blue"
+            android:drawableTint="@color/light_blue"
+            android:textColor="@color/white"
+            android:maxLength="4"
+            android:inputType="number" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Genre"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/genreEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:backgroundTint="@color/light_blue"
+            android:drawableTint="@color/light_blue"
+            android:textColor="@color/white"
+            android:inputType="text" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/tagsDoneButton"
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="36dp"
+        android:layout_marginEnd="20dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:text="Done"
+        android:textColor="@color/light_blue"/>
+</LinearLayout>

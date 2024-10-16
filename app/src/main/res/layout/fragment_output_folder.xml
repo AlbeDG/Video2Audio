@@ -1,11 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/selectAllLayout"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select All"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="@color/text_color"/>
+            <CheckBox
+                android:id="@+id/selectAllCheckbox"
+                style="@style/LightBlueCheck"
+                android:layout_width="80dp"
+                android:layout_height="26dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:buttonTint="@color/light_blue"
+                android:checked="false"
+                android:clickable="false"
+                android:gravity="center"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:visibility="visible" />
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/outputRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
     <TextView
         android:id="@+id/emptyOutputFolderText"
         android:layout_width="wrap_content"
@@ -16,16 +64,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/outputRecycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -37,4 +76,52 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_bottom_nav" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="right"
+        android:id="@+id/selectionButtonsLayout"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emptyOutputFolderText"
+        app:layout_constraintVertical_bias="1.0">
+        <ImageButton
+            android:id="@+id/selectionDelete"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/round_button"
+            android:backgroundTint="@color/light_blue"
+            android:contentDescription="TODO"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/baseline_delete_24"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
+        <ImageButton
+            android:id="@+id/selectionShare"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/round_button"
+            android:backgroundTint="@color/light_blue"
+            android:contentDescription="TODO"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/baseline_share_24"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

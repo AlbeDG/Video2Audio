@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.slider.RangeSlider
+        android:id="@+id/rangeSlider"
+        android:layout_width="match_parent"
+        android:layout_height="90dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:weightSum="3"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
+            android:id="@+id/trimFromText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:backgroundTint="@color/light_blue"
+            android:drawableTint="@color/light_blue"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:text="To"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:textSize="18sp" />
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
+            android:id="@+id/trimToText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:backgroundTint="@color/light_blue"
+            android:drawableTint="@color/light_blue"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</LinearLayout>

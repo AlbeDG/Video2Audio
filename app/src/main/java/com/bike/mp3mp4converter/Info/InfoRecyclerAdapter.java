@@ -46,6 +46,9 @@ public class InfoRecyclerAdapter extends RecyclerView.Adapter<InfoRecyclerAdapte
         nameValuesMap.put("Extension", outputFile.getExtension());
         nameValuesMap.put("Size", outputFile.getFileSizeString());
         nameValuesMap.put("Encoding", outputFile.encoding);
+        if (outputFile.manager != null) {
+            nameValuesMap.put("Metadatas", outputFile.manager.toString());
+        }
     }
     public class InfoHolder extends RecyclerView.ViewHolder {
 

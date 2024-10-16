@@ -12,8 +12,12 @@ import com.bike.fragment.FragmentHome;
 import com.bike.fragment.FragmentOutputFolder;
 import com.bike.mp3mp4converter.Conversion.ConvertActivity;
 import com.bike.mp3mp4converter.Conversion.Converter;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,6 +29,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Environment;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -42,13 +47,16 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
 
+    String[] REQUESTED_PERMISSIONS = Build.VERSION.SDK_INT >= 33 ?
+            new String[] {Manifest.permission.READ_MEDIA_VIDEO, Manifest.permission.READ_MEDIA_AUDIO} :
+            new String[] {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ConvertActivity.converter = new Converter();
         ConvertActivity.converter.init();
-        Config.setLogLevel(Level.AV_LOG_DEBUG);
+        Config.setLogLevel(Level.AV_LOG_INFO);
         FragmentOutputFolder.configManager = new ConfigManager(this);
         checkFilePermissions();
         bottomNavigationView = findViewById(R.id.bottomNavigation);
@@ -73,17 +81,42 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this, fragmentArrayList);
         pagerMain.setAdapter(viewPagerAdapter);
         INSTANCE = this;
-        Log.d("APP", "Storage dir: " + Environment.getExternalStorageDirectory());
+        bottomNavigationView.setSelectedItemId(R.id.outputFolder);
+        MobileAds.initialize(this, initializationStatus -> {
+
+        });
+    }
+
+    public FragmentHome getFragmentHome() {
+        return (FragmentHome) fragmentArrayList.get(0);
+    }
+
+    public FragmentOutputFolder getFragmentOutputFolder() {
+        return (FragmentOutputFolder) fragmentArrayList.get(1);
     }
     private void checkFilePermissions() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        boolean hasPermissions = true;
+        for (String permission : REQUESTED_PERMISSIONS) {
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) hasPermissions = false;
+        }
+        if (!hasPermissions) {
             ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    REQUESTED_PERMISSIONS,
                     PERMISSION_REQUEST_CODE);
         }
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            boolean granted = grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+            if (!granted) Toast.makeText(this, "File permissions are requested to use this application", Toast.LENGTH_LONG).show();
+        }
+    }
 
     public static String changeFileExtension(String filePath, String newExtension) {
         File file = new File(filePath);
@@ -99,8 +132,4 @@ public class MainActivity extends AppCompatActivity {
         String[] patterns = finalPath.split("/");
         return patterns[patterns.length - 1];
     }
-
-
-
-
 }

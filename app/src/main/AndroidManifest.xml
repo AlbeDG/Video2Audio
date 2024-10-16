@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mp3mp4converter"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-6787571117557133~7058456920"/>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -37,6 +42,8 @@
         <activity
             android:name=".Conversion.ConvertActivity"
             android:exported="true"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:theme="@style/Theme.Mp3mp4converter">
             <intent-filter>
@@ -46,8 +53,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Output.OutputFolderActivity"
+            android:name=".Conversion.AfterConversion.AfterConversionActivity"
             android:exported="true"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:theme="@style/Theme.Mp3mp4converter">
             <intent-filter>

@@ -1,11 +1,31 @@
 package com.bike.mp3mp4converter.Output;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
+
+import com.bike.mp3mp4converter.Conversion.MetadataManager;
+import com.bike.mp3mp4converter.MainActivity;
+import com.bike.mp3mp4converter.Output.Dialogs.RenameDialog;
+import com.bike.mp3mp4converter.R;
+
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 
 public class OutputFile {
+
     public String title, duration, size, path, bitrate, encoding;
+
+    public MetadataManager manager;
 
     public OutputFile(File file, String duration, String bitrate, String encoding) {
         this.path = file.getAbsolutePath();
@@ -44,6 +64,37 @@ public class OutputFile {
 
     public String getExtension() {
         return "." + FilenameUtils.getExtension(title);
+    }
+
+    public void share(String applicationId) {
+        File toFile = toFile();
+        if (toFile.exists()) {
+            Uri uri = toUri(applicationId);
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+            if (shareIntent.resolveActivity(MainActivity.INSTANCE.getPackageManager()) != null) {
+                MainActivity.INSTANCE.startActivity(Intent.createChooser(shareIntent, "Share file using"));
+            }
+        } else Toast.makeText(MainActivity.INSTANCE, "File not found", Toast.LENGTH_LONG).show();
+    }
+
+    public void open(String applicationId) {
+        File toFile = toFile();
+        if (toFile.exists()) {
+            Uri uri = toUri(applicationId);
+            Intent promptInstall = new Intent(Intent.ACTION_VIEW).setData(uri);
+            promptInstall.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            promptInstall.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            MainActivity.INSTANCE.startActivity(promptInstall);
+        } else Log.e("APP", "Wanted file does not exist!");
+    }
+
+    public Uri toUri(String applicationId) {
+        File toFile = toFile();
+        return FileProvider.getUriForFile(MainActivity.INSTANCE, applicationId + ".fileprovider", toFile);
     }
 
 }

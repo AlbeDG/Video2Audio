@@ -4,6 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="light_blue">#1D91CD</color>
     <color name="light_gray">#323030</color>
+    <color name="text_color">#FF000000</color>
+    <color name="dialog_bg_color">#FFFFFF</color>
     <color name="exo_bottom_bar_background" tools:override="true" >#00FFFFFF</color>
     <color name="exo_black_opacity_60" tools:override="true" >#00FFFFFF</color>
+    <color name="layout_disabled_color">#7E787878</color>
 </resources>
