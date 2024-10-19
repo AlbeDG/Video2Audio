@@ -7,41 +7,34 @@
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-
-    <LinearLayout
-        android:id="@+id/selectFileLayout"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginEnd="80dp"
-        android:background="@drawable/button_background"
+    <Button
+        android:id="@+id/selectFileButton"
+        android:layout_width="304dp"
+        android:layout_height="98dp"
         android:backgroundTint="@color/light_blue"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:orientation="vertical"
+        android:scaleType="fitXY"
+        android:text="Choose a file"
+        android:textColorHighlight="#FF0000"
+        android:textColor="@color/white"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/baseline_video_file_24"
-            tools:layout_editor_absoluteX="87dp"
-            tools:layout_editor_absoluteY="72dp" />
+    <Button
+        android:id="@+id/outputFolderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="276dp"
+        android:text="Output folder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.996"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectFileButton" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Choose a video"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
-    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

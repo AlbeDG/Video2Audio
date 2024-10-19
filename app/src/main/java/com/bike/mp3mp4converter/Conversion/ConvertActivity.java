@@ -9,30 +9,21 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 
-import com.bike.mp3mp4converter.ADS.AdsManager;
-import com.bike.mp3mp4converter.BackButtonActivity;
-import com.bike.mp3mp4converter.Conversion.Dialogs.QualityDialog;
-import com.bike.mp3mp4converter.Conversion.Dialogs.TagsDialog;
-import com.bike.mp3mp4converter.Conversion.Dialogs.TrimDialog;
-import com.bike.mp3mp4converter.Conversion.Dialogs.VolumeDialog;
 import com.bike.mp3mp4converter.FileFormats.AudioFileFormat;
 import com.bike.mp3mp4converter.FileFormats.EncodingFormat;
 import com.bike.mp3mp4converter.R;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.MediaItem;
-import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.ui.PlayerView;
 
-import java.util.Random;
 
-public class ConvertActivity extends BackButtonActivity {
+public class ConvertActivity extends AppCompatActivity {
 
     public static final AudioFileFormat[] AVAILABLE_FORMATS = {AudioFileFormat.MP3, AudioFileFormat.AAC, AudioFileFormat.AMR, AudioFileFormat.AIFF, AudioFileFormat.FLAC, AudioFileFormat.M4A, AudioFileFormat.OGG, AudioFileFormat.OPUS, AudioFileFormat.WAV, AudioFileFormat.WMA};
 
@@ -53,42 +44,24 @@ public class ConvertActivity extends BackButtonActivity {
 
     ExoPlayer exoPlayer;
 
-    LinearLayout titleLayout, trimLayout, qualityLayout, volumeLayout, modifyTagsLayout;
-
-    public final int DEFAULT_BITRATE = 128;
-
-    public static final String INTERSTITIAL_ADS_ID = "ca-app-pub-6787571117557133/4432293582",
-    BANNER_ADS_ID = "ca-app-pub-6787571117557133/5739168643";
-
-    public static AdsManager adsManager = new AdsManager(INTERSTITIAL_ADS_ID, BANNER_ADS_ID);
-
-    Random random = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Uri uri = Uri.parse(getIntent().getStringExtra("videoURI"));
-        try {
-            converter = new Converter(this, AudioFileFormat.MP3, uri);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        converter = new Converter(this, AudioFileFormat.MP3);
         setContentView(R.layout.activity_convert);
-        addBackButton(titleLayout = findViewById(R.id.titleLayout));
-        QualityDialog qualityDialog = new QualityDialog(this);
-        VolumeDialog volumeDialog = new VolumeDialog(this);
-        TagsDialog tagsDialog = new TagsDialog(this);
         progressTextView = findViewById(R.id.progressText);
         progressTextView.setVisibility(View.GONE);
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
         availableAudioFormats = findViewById(R.id.availableAudioFormats);
         availableEncodingFormats = findViewById(R.id.availableEncodingFormats);
-        adapter = ArrayAdapter.createFromResource(this, R.array.audio_formats, R.layout.custom_spinner_item);
+        adapter = ArrayAdapter.createFromResource(this, R.array.audio_formats, R.layout.spinner_item);
         availableAudioFormats.setAdapter(adapter);
-        adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.custom_spinner_item, EncodingFormat.getFormatStringSequences(converter.audioFileFormat));
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.spinner_item, EncodingFormat.getFormatStringSequences(converter.audioFileFormat));
         availableEncodingFormats.setAdapter(adapter);
+        availableEncodingFormats.setSelection(10);
         titleView = findViewById(R.id.videoTitle);
         videoView = findViewById(R.id.videoView);
         videoTitle = converter.getFileName(uri);
@@ -98,8 +71,7 @@ public class ConvertActivity extends BackButtonActivity {
             convertButton.setEnabled(false);
             String formatString = availableAudioFormats.getSelectedItem().toString();
             converter.setAudioFileFormat(AudioFileFormat.fromString(formatString));
-            if (!converter.trim) converter.beginConversion();
-            else converter.beginConversion(Converter.formatDuration(converter.from), Converter.formatDuration(converter.to), converter.trim);
+            converter.convert(uri);
             progressBar.setVisibility(View.VISIBLE);
             progressTextView.setVisibility(View.VISIBLE);
         });
@@ -109,15 +81,11 @@ public class ConvertActivity extends BackButtonActivity {
                 AudioFileFormat selectedFormat = AVAILABLE_FORMATS[position];
                 converter.encodingFormat.init(selectedFormat);
                 converter.setAudioFileFormat(selectedFormat);
-                adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.custom_spinner_item, EncodingFormat.getFormatStringSequences(selectedFormat));
+                adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.spinner_item, EncodingFormat.getFormatStringSequences(selectedFormat));
                 availableEncodingFormats.setAdapter(adapter);
                 availableEncodingFormats.setEnabled(adapter.getCount() > 1);
-                if (adapter.getCount() > 10) {
-                    availableEncodingFormats.setSelection(10); //CBR 128KB/S
-                    converter.encodingFormat.bitrate = DEFAULT_BITRATE;
-                }
-                qualityDialog.amr = selectedFormat.equals(AudioFileFormat.AMR);
-                qualityDialog.setDefaultAudioFrequency(selectedFormat);
+                Log.d("APP", "Set adapter for " + selectedFormat.toString());
+                Log.d("APP", "Spinner elements " + availableEncodingFormats.getAdapter().getCount() + " " + EncodingFormat.getFormatStringSequences(selectedFormat).length);
             }
 
             @Override
@@ -138,32 +106,13 @@ public class ConvertActivity extends BackButtonActivity {
                 } else {
                     Log.e("APP", "The spinner string is invalid");
                 }
+                Log.d("APP", "Selected format: " + converter.encodingFormat + " bitrate " + converter.encodingFormat.bitrate);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
-
-        trimLayout = findViewById(R.id.trimLayout);
-        trimLayout.setOnClickListener(view -> {
-            TrimDialog trimDialog = new TrimDialog(this);
-            trimDialog.show();
-        });
-        qualityLayout = findViewById(R.id.qualityLayout);
-        qualityLayout.setOnClickListener(view -> {
-            qualityDialog.init();
-            if (!qualityDialog.amr) qualityDialog.show();
-            else Toast.makeText(this, "AMR-NB format does not support quality changes!", Toast.LENGTH_LONG).show();
-        });
-        volumeLayout = findViewById(R.id.volumeLayout);
-        volumeLayout.setOnClickListener(view -> {
-            volumeDialog.show();
-        });
-        modifyTagsLayout = findViewById(R.id.modifyTagsLayout);
-        modifyTagsLayout.setOnClickListener(view -> {
-            tagsDialog.show();
         });
         loadVideo(uri);
     }
@@ -174,29 +123,12 @@ public class ConvertActivity extends BackButtonActivity {
         MediaItem mediaItem = MediaItem.fromUri(uri);
         exoPlayer.setMediaItem(mediaItem);
         exoPlayer.prepare();
-        exoPlayer.addListener(new Player.Listener() {
-            @Override
-            public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-                if (playbackState == ExoPlayer.STATE_READY) {
-                    converter.videoDuration = exoPlayer.getDuration();
-                    if (!converter.ready) {
-                        converter.ready = true;
-                        converter.from = 0;
-                        converter.to = converter.videoDuration;
-                    }
-                }
-            }
-        });
-
     }
 
     public void onConversionEnded() {
         convertButton.setEnabled(true);
         progressBar.setVisibility(View.GONE);
         progressTextView.setVisibility(View.GONE);
-        //ADS
-        if (shouldShowAd()) adsManager.loadInterstitial(this);
-        //END ADS
     }
 
     public void updateProgressBar(int progress) {
@@ -204,15 +136,9 @@ public class ConvertActivity extends BackButtonActivity {
         progressTextView.setText(progress + "%");
     }
 
-
     @Override
     public void onBackPressed() {
         exoPlayer.stop();
         super.onBackPressed();
-    }
-
-    boolean shouldShowAd() {
-        int randomNumber = random.nextInt(100);
-        return randomNumber < 50;
     }
 }

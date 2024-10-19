@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="left"
         android:text="Info"
-        android:textColor="@color/text_color"
+        android:textColor="@color/white"
         android:textSize="15sp" />
 
     <androidx.recyclerview.widget.RecyclerView

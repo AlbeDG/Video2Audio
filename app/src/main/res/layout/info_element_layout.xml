@@ -12,7 +12,6 @@
         android:layout_alignParentStart="true"
         android:text="Infoname"
         android:gravity="left"
-        android:textColor="@color/text_color"
         android:textSize="14sp" />
 
     <TextView
@@ -23,7 +22,6 @@
         android:layout_marginStart="10dp"
         android:layout_toEndOf="@+id/infoName"
         android:gravity="left"
-        android:textColor="@color/text_color"
         android:text="Infovalue"
         android:textSize="14sp" />
 </RelativeLayout>

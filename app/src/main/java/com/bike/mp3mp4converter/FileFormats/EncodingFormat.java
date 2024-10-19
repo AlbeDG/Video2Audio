@@ -175,7 +175,7 @@ public class EncodingFormat {
                 case WMA -> String.format("-codec:a wmav2 -b:a %sk", bitrateString);
                 case AIFF -> "-codec:a pcm_s16be";
                 case AMR ->
-                        String.format("-b:a %sk -codec:a libopencore_amrnb", bitrateString);
+                        String.format("-ar 8000 -ac 1 -b:a %sk -codec:a libopencore_amrnb", bitrateString);
                 default -> null;
             };
         } else {

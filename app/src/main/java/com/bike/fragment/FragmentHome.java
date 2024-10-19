@@ -9,11 +9,11 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import com.bike.mp3mp4converter.Conversion.ConvertActivity;
 import com.bike.mp3mp4converter.R;
@@ -23,7 +23,9 @@ public class FragmentHome extends Fragment implements View.OnClickListener {
 
     View view;
 
-    LinearLayout selectFileLayout;
+
+    Button selectFileButton, outputFolderButton;
+
     public FragmentHome() {
     }
 
@@ -37,8 +39,8 @@ public class FragmentHome extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         this.view = inflater.inflate(R.layout.fragment_home, container, false);
-        selectFileLayout = view.findViewById(R.id.selectFileLayout);
-        selectFileLayout.setOnClickListener(view -> {
+        selectFileButton = view.findViewById(R.id.selectFileButton);
+        selectFileButton.setOnClickListener(view -> {
             openFilePicker();
         });
 
