@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_color"
-                android:text="Open file"
+                android:text="@string/open_file"
                 android:gravity="center"/>
 
         </LinearLayout>
@@ -74,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_color"
-                android:text="Edit title"
+                android:text="@string/edit_title"
                 android:gravity="center"/>
 
         </LinearLayout>
@@ -97,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_color"
-                android:text="Share"
+                android:text="@string/share"
                 android:gravity="center"/>
 
         </LinearLayout>
@@ -111,10 +111,10 @@
         android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:textColor="@color/light_blue"
         android:textStyle="bold"
-        android:text="Go to output folder" />
+        android:text="@string/go_to_output_folder" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

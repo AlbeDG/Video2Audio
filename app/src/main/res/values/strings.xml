@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">mp3mp4converter</string>
+    <string name="app_name">Video2Audio</string>
     <string-array name="audio_formats">
         <item>MP3</item>
         <item>AAC</item>
@@ -7,11 +7,37 @@
         <item>AIFF</item>
         <item>FLAC</item>
         <item>M4A</item>
-        <item>OGG</item>
         <item>OPUS</item>
         <item>WAV</item>
         <item>WMA</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="version_text">Version 1.0</string>
+    <string name="privacy_policy_string">Privacy policy</string>
+    <string name="application_description">VideoToAudioConverter is a powerful and user-friendly application designed to transform your video files into high-quality audio formats. Leveraging the capabilities of the Arthenica Mobile FFmpeg library, our app supports a wide range of video formats, including: MP4, MKV, AVI, MOV, FLV, WEBM, MPEG, MPG, OGV, WMV, ASF, 3GP. With VideoToAudioConverter, you can easily convert your videos into popular audio formats, such as: MP3, WAV, AAC, OPUS, M4A, WMA, AIFF, AMR. Whether you want to extract music from your favorite videos or save space on your device, VideoToAudioConverter provides a quick and reliable solution for all your audio conversion needs.</string>
+    <string name="credits_string">Credits</string>
+    <string name="open_file">Open file</string>
+    <string name="edit_title">Edit title</string>
+    <string name="share">Share</string>
+    <string name="go_to_output_folder">Go to output folder</string>
+    <string name="trim">Trim</string>
+    <string name="quality">Quality</string>
+    <string name="volume">Volume</string>
+    <string name="modify_tags">Modify tags</string>
+    <string name="convert">Convert</string>
+    <string name="frequency">Frequency</string>
+    <string name="channel">Channel</string>
+    <string name="rename">Rename</string>
+    <string name="info">Info</string>
+    <string name="delete">Delete</string>
+    <string name="choose_a_video">Choose a video</string>
+    <string name="the_output_folder_is_empty">The output folder is empty!</string>
+    <string name="title">Title</string>
+    <string name="artist">Artist</string>
+    <string name="album">Album</string>
+    <string name="year">Year</string>
+    <string name="genre">Genre</string>
+    <string name="cancel">Cancel</string>
+    <string name="done">Done</string>
 </resources>

@@ -1,74 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/outputFileLayout"
     android:background="?android:attr/selectableItemBackground"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="335dp"
-        android:layout_height="51dp"
-        android:layout_marginEnd="78dp"
-        android:text="TITLE"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        />
-
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView"
-        tools:layout_editor_absoluteX="0dp">
-
-        <TextView
-            android:id="@+id/durationTextView"
-            android:layout_width="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Duration 00:00" />
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="4dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/sizeTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="0kb" />
+                <TextView
+                    android:id="@+id/titleTextView"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/bitrateTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="Bitrate: "
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+                tools:layout_editor_absoluteX="0dp">
 
-            />
+                <TextView
+                    android:id="@+id/durationTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Duration 00:00" />
 
-        <TextView
-            android:id="@+id/encodingTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="Encoding: CBR"
+                <TextView
+                    android:id="@+id/sizeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="0kb" />
 
-            />
+                <TextView
+                    android:id="@+id/bitrateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Bitrate: "
+
+                    />
+            </LinearLayout>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="4dp"/>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/outputFileImageView"
+            android:layout_marginEnd="5dp"
+            android:layout_width="56dp"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ellipsis_v_icon"
+            android:layout_weight="1"
+            android:visibility="visible"
+            app:tint="@color/light_blue" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            style="@style/LightBlueCheck"
+            android:layout_width="56dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:checked="false"
+            android:clickable="false"
+            android:gravity="center"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:visibility="gone" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="56dp"
-        android:layout_height="53dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_menu_24" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

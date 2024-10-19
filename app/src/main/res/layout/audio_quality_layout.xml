@@ -16,7 +16,7 @@
             android:layout_weight="1"
             android:textColor="@color/text_color"
             android:textSize="18sp"
-            android:text="Channel" />
+            android:text="@string/channel" />
 
         <Spinner
             android:id="@+id/channelSpinner"
@@ -39,7 +39,7 @@
             android:layout_weight="1"
             android:textColor="@color/text_color"
             android:textSize="18sp"
-            android:text="Frequency" />
+            android:text="@string/frequency" />
 
         <Spinner
             android:id="@+id/frequencySpinner"

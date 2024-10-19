@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.bike.mp3mp4converter'
+    namespace 'com.albe.Video2Audio'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.bike.mp3mp4converter"
+        applicationId "com.albe.Video2Audio"
         minSdk 24
         targetSdk 34
         versionCode 1
@@ -42,6 +42,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.smartdevelopers-ir:SmartFilePicker:1.5.2'
     implementation 'com.arthenica:mobile-ffmpeg-full-gpl:4.4.LTS'
     implementation 'com.google.android.exoplayer:exoplayer:2.19.1'
     implementation 'commons-io:commons-io:2.16.1'
