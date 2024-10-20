@@ -1,31 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            color: #333;
-        }
-        h2 {
-            color: #444;
-        }
-        pre {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 10px;
-            overflow-x: auto;
-        }
-    </style>
-</head>
-<body>
+
 
 <p><strong>This app utilizes open-source software. Without these libraries, the development of this application would not have been possible. We extend our heartfelt thanks to the contributors of these projects and the entire open-source community on GitHub for their invaluable contributions!</strong></p>
 
