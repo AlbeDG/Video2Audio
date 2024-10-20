@@ -61,7 +61,8 @@ GitHub Repository: <a href="https://github.com/SmartDevelopers-ir/SmartFilePicke
 
 <h2>9. TedBottomPicker (RealPathUtil.java)</h2>
 <pre>
-No license information available.
+Licensed under the Apache License 2.0.
+<a href="https://www.apache.org/licenses/LICENSE-2.0">Full License</a>
 GitHub Repository: <a href="https://github.com/ParkSangGwon/TedBottomPicker/tree/master">Link</a>
 </pre>
 
