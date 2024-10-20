@@ -16,7 +16,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.albe.Video2Audio.ADS.AdsManager;
 import com.albe.Video2Audio.BackButtonActivity;
 import com.albe.Video2Audio.Conversion.Dialogs.QualityDialog;

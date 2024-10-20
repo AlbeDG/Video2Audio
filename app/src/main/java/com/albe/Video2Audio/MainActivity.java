@@ -4,29 +4,24 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-
-import com.arthenica.mobileffmpeg.Config;
-import com.arthenica.mobileffmpeg.Level;
-import com.albe.adapter.ViewPagerAdapter;
-import com.albe.fragment.FragmentHome;
-import com.albe.fragment.FragmentOutputFolder;
-import com.albe.Video2Audio.Conversion.ConvertActivity;
-import com.albe.Video2Audio.Conversion.Converter;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.provider.Settings;
-import android.view.View;
-import android.widget.Toast;
+import com.albe.Video2Audio.Conversion.ConvertActivity;
+import com.albe.Video2Audio.Conversion.Converter;
+import com.albe.adapter.ViewPagerAdapter;
+import com.albe.fragment.FragmentHome;
+import com.albe.fragment.FragmentOutputFolder;
+import com.arthenica.mobileffmpeg.Config;
+import com.arthenica.mobileffmpeg.Level;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.File;
 import java.util.ArrayList;

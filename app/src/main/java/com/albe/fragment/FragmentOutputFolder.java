@@ -1,9 +1,6 @@
 package com.albe.fragment;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +9,8 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+
+import androidx.fragment.app.Fragment;
 
 import com.albe.Video2Audio.ConfigManager;
 import com.albe.Video2Audio.Conversion.MetadataManager;

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.albe.Video2Audio.BackButtonActivity;
 import com.albe.Video2Audio.R;
 

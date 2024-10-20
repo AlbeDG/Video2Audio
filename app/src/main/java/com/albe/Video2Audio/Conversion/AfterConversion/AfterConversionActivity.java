@@ -1,5 +1,9 @@
 package com.albe.Video2Audio.Conversion.AfterConversion;
 
+import static com.albe.Video2Audio.Conversion.ConvertActivity.adsManager;
+import static com.albe.Video2Audio.Output.OutputFileArrayAdapter.outputFilesManager;
+import static com.albe.fragment.FragmentOutputFolder.gson;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -12,10 +16,6 @@ import com.albe.Video2Audio.Output.Dialogs.RenameDialog;
 import com.albe.Video2Audio.Output.OutputFile;
 import com.albe.Video2Audio.R;
 import com.google.android.gms.ads.AdView;
-
-import static com.albe.fragment.FragmentOutputFolder.gson;
-import static com.albe.Video2Audio.Conversion.ConvertActivity.adsManager;
-import static com.albe.Video2Audio.Output.OutputFileArrayAdapter.outputFilesManager;
 
 public class AfterConversionActivity extends BackButtonActivity {
 

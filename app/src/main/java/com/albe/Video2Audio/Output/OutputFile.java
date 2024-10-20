@@ -9,7 +9,6 @@ import androidx.core.content.FileProvider;
 
 import com.albe.Video2Audio.Conversion.MetadataManager;
 import com.albe.Video2Audio.MainActivity;
-import com.albe.Video2Audio.R;
 
 import org.apache.commons.io.FilenameUtils;
 

@@ -1,10 +1,10 @@
 package com.albe.Video2Audio.Conversion;
 
 import static android.os.Environment.DIRECTORY_MUSIC;
-import static com.arthenica.mobileffmpeg.Config.RETURN_CODE_SUCCESS;
-import static com.albe.fragment.FragmentOutputFolder.gson;
 import static com.albe.Video2Audio.Conversion.AfterConversion.AfterConversionActivity.STRING_EXTRA_NAME;
 import static com.albe.Video2Audio.MainActivity.changeFileExtension;
+import static com.albe.fragment.FragmentOutputFolder.gson;
+import static com.arthenica.mobileffmpeg.Config.RETURN_CODE_SUCCESS;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -12,8 +12,6 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.arthenica.mobileffmpeg.Config;
-import com.arthenica.mobileffmpeg.FFmpeg;
 import com.albe.Video2Audio.Conversion.AfterConversion.AfterConversionActivity;
 import com.albe.Video2Audio.FileFormats.AudioFileFormat;
 import com.albe.Video2Audio.FileFormats.EncodingFormat;
@@ -21,7 +19,8 @@ import com.albe.Video2Audio.FileFormats.VideoFileFormat;
 import com.albe.Video2Audio.MainActivity;
 import com.albe.Video2Audio.Output.OutputFile;
 import com.albe.Video2Audio.RealPathUtil;
-
+import com.arthenica.mobileffmpeg.Config;
+import com.arthenica.mobileffmpeg.FFmpeg;
 
 import java.io.File;
 
