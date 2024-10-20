@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
+<p><strong>VideoToAudioConverter is a powerful and user-friendly application designed to transform your video files into high-quality audio formats. Leveraging the capabilities of the Arthenica Mobile FFmpeg library, our app supports a wide range of video formats, including: MP4, MKV, AVI, MOV, FLV, WEBM, MPEG, MPG, OGV, WMV, ASF, 3GP. With VideoToAudioConverter, you can easily convert your videos into popular audio formats, such as: MP3, WAV, AAC, OPUS, M4A, WMA, AIFF, AMR. Whether you want to extract music from your favorite videos or save space on your device, VideoToAudioConverter provides a quick and reliable solution for all your audio conversion needs.</strong></p>
+  
 <p><strong>This app utilizes open-source software. Without these libraries, the development of this application would not have been possible. We extend our heartfelt thanks to the contributors of these projects and the entire open-source community on GitHub for their invaluable contributions!</strong></p>
 
 <h2>1. Arthenica Mobile FFmpeg</h2>
