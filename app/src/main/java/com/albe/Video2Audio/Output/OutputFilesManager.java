@@ -30,11 +30,9 @@ public class OutputFilesManager extends ArrayList<OutputFile>{
     }
 
     public void addFiles(ArrayList<OutputFile> files) {
-        int start = size(), addedCount = 0;
         for (OutputFile file : files) {
             if (file.toFile().exists()) {
                 add(file);
-                addedCount++;
             }
         }
         adapter.notifyDataSetChanged();

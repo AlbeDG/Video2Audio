@@ -32,6 +32,7 @@
                     android:ellipsize="end"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:textColor="@color/text_color"
                     android:layout_weight="1" />
 
             </LinearLayout>
@@ -48,6 +49,7 @@
                     android:id="@+id/durationTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/text_color"
                     android:text="Duration 00:00" />
 
                 <TextView
@@ -55,6 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:textColor="@color/text_color"
                     android:text="0kb" />
 
                 <TextView
@@ -62,8 +65,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:textColor="@color/text_color"
                     android:text="Bitrate: "
-
                     />
             </LinearLayout>
             <Space

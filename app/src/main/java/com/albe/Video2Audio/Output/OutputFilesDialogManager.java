@@ -1,5 +1,7 @@
 package com.albe.Video2Audio.Output;
 
+import static com.albe.Video2Audio.Output.OutputFileArrayAdapter.outputFilesManager;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -19,12 +21,8 @@ import com.albe.Video2Audio.R;
 
 public class OutputFilesDialogManager {
 
-    OutputFilesManager outputFilesManager;
 
     boolean dialogOpen = false;
-    public OutputFilesDialogManager(OutputFilesManager outputFilesManager) {
-        this.outputFilesManager = outputFilesManager;
-    }
 
     public void showDialog(OutputFile current) {
         dialogOpen = true;

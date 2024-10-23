@@ -43,7 +43,7 @@ public class OutputFileArrayAdapter extends BaseAdapter {
 
     boolean selecting;
 
-    OutputFilesDialogManager outputFilesDialogManager = new OutputFilesDialogManager(outputFilesManager);
+    OutputFilesDialogManager outputFilesDialogManager = new OutputFilesDialogManager();
 
     LinearLayout selectionButtonsLayout;
 
