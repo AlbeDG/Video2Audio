@@ -98,6 +98,10 @@ public class OutputFileArrayAdapter extends BaseAdapter {
         outputFilesManager = new OutputFilesManager(this);
     }
 
+    public boolean selectAllExists() {
+        return getSelectAllLayout() != null && getSelectAllCheckbox() != null;
+    }
+
     @Override
     public int getCount() {
         return outputFilesManager.size();
@@ -142,6 +146,7 @@ public class OutputFileArrayAdapter extends BaseAdapter {
             return true;
         });
         convertView.setTag(viewHolder);
+        handleEmptyTextView();
         return convertView;
     }
 
@@ -193,6 +198,7 @@ public class OutputFileArrayAdapter extends BaseAdapter {
     }
 
     public void setSelection(OutputFile file, ViewHolder holder, boolean selection) {
+        if (!selectAllExists()) return;
         outputSelectionMap.put(file, selection);
         holder.checkBox.setChecked(selection);
         //Deselection case
@@ -204,6 +210,7 @@ public class OutputFileArrayAdapter extends BaseAdapter {
     }
 
     public void startSelecting() {
+        if (!selectAllExists()) return;
         getSelectAllLayout().setVisibility(View.VISIBLE);
         getSelectAllCheckbox().setChecked(false);
         selecting = true;
@@ -216,6 +223,7 @@ public class OutputFileArrayAdapter extends BaseAdapter {
     }
 
     public void stopSelecting() {
+        if (!selectAllExists()) return;
         getSelectAllLayout().setVisibility(View.GONE);
         getSelectAllCheckbox().setChecked(false);
         selecting = false;

@@ -1,7 +1,9 @@
 package com.albe.Video2Audio;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
 
-    private static final int PERMISSION_REQUEST_CODE = 2, SETTINGS_CHANGE_CODE = 1;
+    private static final int PERMISSION_REQUEST_CODE = 2;
 
 
     public static MainActivity INSTANCE;
@@ -126,5 +128,19 @@ public class MainActivity extends AppCompatActivity {
         String finalPath = parentDir != null ? parentDir + File.separator + newFileName : newFileName;
         String[] patterns = finalPath.split("/");
         return patterns[patterns.length - 1];
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConf) {
+        super.onConfigurationChanged(newConf);
+        restart();
+    }
+
+    void restart() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+        android.os.Process.killProcess(android.os.Process.myPid());
     }
 }

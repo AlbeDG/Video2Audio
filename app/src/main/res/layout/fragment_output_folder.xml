@@ -29,7 +29,7 @@
                 android:textColor="@color/text_color"/>
             <CheckBox
                 android:id="@+id/selectAllCheckbox"
-                style="@style/LightBlueCheck"
+                app:buttonTint="@color/light_blue"
                 android:layout_width="30dp"
                 android:layout_height="26dp"
                 android:checked="false"

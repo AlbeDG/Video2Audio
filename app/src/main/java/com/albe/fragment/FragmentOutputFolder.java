@@ -29,7 +29,6 @@ public class FragmentOutputFolder extends Fragment {
 
     View view;
 
-
     public static ConfigManager configManager;
 
     public static final String OUTPUT_FILE_KEY = "outputFiles";
@@ -51,6 +50,7 @@ public class FragmentOutputFolder extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
     }
 
     @Override
